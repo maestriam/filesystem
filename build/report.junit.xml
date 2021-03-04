@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="Maestriam\FileSystem\Tests\Unit\FileSystem\CreateDriveTest" file="C:\xampp8\htdocs\packages\maestriam\filesystem\tests\Unit\FileSystem\CreateDriveTest.php" tests="3" assertions="13" errors="0" warnings="0" failures="0" skipped="0" time="1.554764">
+    <testcase name="testCreateDefaultDrive" class="Maestriam\FileSystem\Tests\Unit\FileSystem\CreateDriveTest" classname="Maestriam.FileSystem.Tests.Unit.FileSystem.CreateDriveTest" file="C:\xampp8\htdocs\packages\maestriam\filesystem\tests\Unit\FileSystem\CreateDriveTest.php" line="16" assertions="4" time="1.459513"/>
+    <testcase name="testCreateNewDrive" class="Maestriam\FileSystem\Tests\Unit\FileSystem\CreateDriveTest" classname="Maestriam.FileSystem.Tests.Unit.FileSystem.CreateDriveTest" file="C:\xampp8\htdocs\packages\maestriam\filesystem\tests\Unit\FileSystem\CreateDriveTest.php" line="28" assertions="4" time="0.029130"/>
+    <testcase name="testCreateDriveUsingDefaultConfig" class="Maestriam\FileSystem\Tests\Unit\FileSystem\CreateDriveTest" classname="Maestriam.FileSystem.Tests.Unit.FileSystem.CreateDriveTest" file="C:\xampp8\htdocs\packages\maestriam\filesystem\tests\Unit\FileSystem\CreateDriveTest.php" line="51" assertions="5" time="0.066121"/>
+  </testsuite>
+</testsuites>
