@@ -2,8 +2,8 @@
 
 namespace Maestriam\FileSystem\Contracts;
 
-use Maestriam\FileSystem\Entities\File;
-use Maestriam\FileSystem\Entities\Folder;
+use Maestriam\FileSystem\Foundation\File;
+use Maestriam\FileSystem\Foundation\Folder;
 
 interface DriveInterface 
 {

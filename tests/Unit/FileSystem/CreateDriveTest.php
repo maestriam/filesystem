@@ -2,8 +2,8 @@
 
 namespace Maestriam\FileSystem\Tests\Unit\FileSystem;
 
-use Maestriam\FileSystem\Entities\Drive;
-use Maestriam\FileSystem\Entities\FileSystem;
+use Maestriam\FileSystem\Foundation\Drive;
+use Maestriam\FileSystem\Foundation\FileSystem;
 use Maestriam\FileSystem\Tests\TestCase;
 
 class CreateDriveTest extends TestCase

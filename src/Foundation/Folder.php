@@ -1,6 +1,6 @@
 <?php
 
-namespace Maestriam\FileSystem\Entities;
+namespace Maestriam\FileSystem\Foundation;
 
 use Maestriam\FileSystem\Contracts\SystemInterface;
 

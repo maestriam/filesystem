@@ -2,7 +2,7 @@
 
 namespace Maestriam\FileSystem\Contracts;
 
-use Maestriam\FileSystem\Entities\Drive;
+use Maestriam\FileSystem\Foundation\Drive;
 
 interface FileSystemInterface 
 {   

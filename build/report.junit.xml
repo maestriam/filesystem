@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="" tests="3" assertions="13" errors="0" warnings="0" failures="0" skipped="0" time="0.152477">
-    <testsuite name="Laravel Modules Test Suite" tests="3" assertions="13" errors="0" warnings="0" failures="0" skipped="0" time="0.152477">
-      <testsuite name="Maestriam\FileSystem\Tests\Unit\FileSystem\CreateDriveTest" file="C:\xampp8\htdocs\packages\maestriam\filesystem\tests\Unit\FileSystem\CreateDriveTest.php" tests="3" assertions="13" errors="0" warnings="0" failures="0" skipped="0" time="0.152477">
-        <testcase name="testCreateDefaultDrive" class="Maestriam\FileSystem\Tests\Unit\FileSystem\CreateDriveTest" classname="Maestriam.FileSystem.Tests.Unit.FileSystem.CreateDriveTest" file="C:\xampp8\htdocs\packages\maestriam\filesystem\tests\Unit\FileSystem\CreateDriveTest.php" line="16" assertions="4" time="0.116662"/>
-        <testcase name="testCreateNewDrive" class="Maestriam\FileSystem\Tests\Unit\FileSystem\CreateDriveTest" classname="Maestriam.FileSystem.Tests.Unit.FileSystem.CreateDriveTest" file="C:\xampp8\htdocs\packages\maestriam\filesystem\tests\Unit\FileSystem\CreateDriveTest.php" line="28" assertions="4" time="0.014334"/>
-        <testcase name="testCreateDriveUsingDefaultConfig" class="Maestriam\FileSystem\Tests\Unit\FileSystem\CreateDriveTest" classname="Maestriam.FileSystem.Tests.Unit.FileSystem.CreateDriveTest" file="C:\xampp8\htdocs\packages\maestriam\filesystem\tests\Unit\FileSystem\CreateDriveTest.php" line="51" assertions="5" time="0.021481"/>
+  <testsuite name="" tests="3" assertions="13" errors="0" warnings="0" failures="0" skipped="0" time="0.167497">
+    <testsuite name="Laravel Modules Test Suite" tests="3" assertions="13" errors="0" warnings="0" failures="0" skipped="0" time="0.167497">
+      <testsuite name="Maestriam\FileSystem\Tests\Unit\FileSystem\CreateDriveTest" file="C:\xampp8\htdocs\packages\maestriam\filesystem\tests\Unit\FileSystem\CreateDriveTest.php" tests="3" assertions="13" errors="0" warnings="0" failures="0" skipped="0" time="0.167497">
+        <testcase name="testCreateDefaultDrive" class="Maestriam\FileSystem\Tests\Unit\FileSystem\CreateDriveTest" classname="Maestriam.FileSystem.Tests.Unit.FileSystem.CreateDriveTest" file="C:\xampp8\htdocs\packages\maestriam\filesystem\tests\Unit\FileSystem\CreateDriveTest.php" line="16" assertions="4" time="0.129210"/>
+        <testcase name="testCreateNewDrive" class="Maestriam\FileSystem\Tests\Unit\FileSystem\CreateDriveTest" classname="Maestriam.FileSystem.Tests.Unit.FileSystem.CreateDriveTest" file="C:\xampp8\htdocs\packages\maestriam\filesystem\tests\Unit\FileSystem\CreateDriveTest.php" line="28" assertions="4" time="0.016137"/>
+        <testcase name="testCreateDriveUsingDefaultConfig" class="Maestriam\FileSystem\Tests\Unit\FileSystem\CreateDriveTest" classname="Maestriam.FileSystem.Tests.Unit.FileSystem.CreateDriveTest" file="C:\xampp8\htdocs\packages\maestriam\filesystem\tests\Unit\FileSystem\CreateDriveTest.php" line="51" assertions="5" time="0.022150"/>
       </testsuite>
     </testsuite>
   </testsuite>

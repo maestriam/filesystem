@@ -1,8 +1,8 @@
 <?php
 
-namespace Maestriam\FileSystem\Entities;
+namespace Maestriam\FileSystem\Foundation;
 
-use Maestriam\FileSystem\Entities\File;
+use Maestriam\FileSystem\Foundation\File;
 use Maestriam\FileSystem\Concerns\FluentCalls;
 use Maestriam\FileSystem\Concerns\HandlesCache;
 use Maestriam\FileSystem\Contracts\DriveInterface;
