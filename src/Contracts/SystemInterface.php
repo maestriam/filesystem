@@ -8,11 +8,11 @@ interface SystemInterface
     
     public function exists() : bool;
 
-    public function create() : SystemInterface;
-
     public function find() : ?SystemInterface;
 
-    public function findOrCreate() : SystemInterface;
-
     public function findOrFail() : SystemInterface;
+    
+    public function create(array $args = []) : SystemInterface;
+    
+    public function findOrCreate(array $args = []) : SystemInterface;
 }

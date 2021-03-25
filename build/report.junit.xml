@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="" tests="3" assertions="13" errors="0" warnings="0" failures="0" skipped="0" time="0.167497">
-    <testsuite name="Laravel Modules Test Suite" tests="3" assertions="13" errors="0" warnings="0" failures="0" skipped="0" time="0.167497">
-      <testsuite name="Maestriam\FileSystem\Tests\Unit\FileSystem\CreateDriveTest" file="C:\xampp8\htdocs\packages\maestriam\filesystem\tests\Unit\FileSystem\CreateDriveTest.php" tests="3" assertions="13" errors="0" warnings="0" failures="0" skipped="0" time="0.167497">
-        <testcase name="testCreateDefaultDrive" class="Maestriam\FileSystem\Tests\Unit\FileSystem\CreateDriveTest" classname="Maestriam.FileSystem.Tests.Unit.FileSystem.CreateDriveTest" file="C:\xampp8\htdocs\packages\maestriam\filesystem\tests\Unit\FileSystem\CreateDriveTest.php" line="16" assertions="4" time="0.129210"/>
-        <testcase name="testCreateNewDrive" class="Maestriam\FileSystem\Tests\Unit\FileSystem\CreateDriveTest" classname="Maestriam.FileSystem.Tests.Unit.FileSystem.CreateDriveTest" file="C:\xampp8\htdocs\packages\maestriam\filesystem\tests\Unit\FileSystem\CreateDriveTest.php" line="28" assertions="4" time="0.016137"/>
-        <testcase name="testCreateDriveUsingDefaultConfig" class="Maestriam\FileSystem\Tests\Unit\FileSystem\CreateDriveTest" classname="Maestriam.FileSystem.Tests.Unit.FileSystem.CreateDriveTest" file="C:\xampp8\htdocs\packages\maestriam\filesystem\tests\Unit\FileSystem\CreateDriveTest.php" line="51" assertions="5" time="0.022150"/>
-      </testsuite>
-    </testsuite>
+  <testsuite name="Maestriam\FileSystem\Tests\Unit\FileSystem\CreateFileTest" file="C:\xampp8\htdocs\packages\maestriam\filesystem\tests\Unit\FileSystem\CreateFileTest.php" tests="1" assertions="0" errors="1" warnings="0" failures="0" skipped="0" time="5.799481">
+    <testcase name="testCreateFile" class="Maestriam\FileSystem\Tests\Unit\FileSystem\CreateFileTest" classname="Maestriam.FileSystem.Tests.Unit.FileSystem.CreateFileTest" file="C:\xampp8\htdocs\packages\maestriam\filesystem\tests\Unit\FileSystem\CreateFileTest.php" line="9" assertions="0" time="5.799481">
+      <error type="Exception">Maestriam\FileSystem\Tests\Unit\FileSystem\CreateFileTest::testCreateFile
+Exception: Invalid template directory
+
+C:\xampp8\htdocs\packages\maestriam\filesystem\src\Foundation\Template\TemplateHandler.php:51
+C:\xampp8\htdocs\packages\maestriam\filesystem\src\Foundation\Template\TemplateHandler.php:36
+C:\xampp8\htdocs\packages\maestriam\filesystem\src\Foundation\File\FileHandler.php:68
+C:\xampp8\htdocs\packages\maestriam\filesystem\src\Foundation\File\FileHandler.php:57
+C:\xampp8\htdocs\packages\maestriam\filesystem\tests\Unit\FileSystem\CreateFileTest.php:22</error>
+    </testcase>
   </testsuite>
 </testsuites>

@@ -15,7 +15,5 @@ class FileSystem implements FileSystemInterface
     public function default() : Drive
     {
         return new Drive('filesystem.default');
-    }
-    
-    
+    }    
 }

@@ -2,20 +2,16 @@
 
 namespace Maestriam\FileSystem\Tests\Unit\FileSystem;
 
-use Maestriam\FileSystem\Foundation\Drive;
-use Maestriam\FileSystem\Foundation\FileSystem;
-use Maestriam\FileSystem\Tests\TestCase;
-
-class CreateDriveTest extends TestCase
+class CreateDriveTest extends FileSystemTestCase
 {
     /**
      * Testa se é possível criar instanciar o drive default
      *
      * @return void
      */
-    public function testCreateDefaultDrive()
+    public function testCreateinitDefaultDrive()
     {
-        $drive = $this->getDefaultDrive();       
+        $drive = $this->initDefaultDrive();       
 
         $this->assertDriveInstance($drive);
     }
@@ -35,74 +31,47 @@ class CreateDriveTest extends TestCase
         $drive = $this->filesystem()->drive($name);
 
         $drive
-            ->root($root)
-            ->template($template)
             ->structure($structure)
+            ->template($template)
+            ->root($root)
             ->save();
         
         $this->assertDriveInstance($drive);
     }
 
     /**
-     * Testa se 
+     * Testa se é possível criar um drive e 
+     * utilizar configurações do drive default
      *
      * @return void
      */
-    public function testCreateDriveUsingDefaultConfig()
+    public function testCreateDriveOverridingDefault()
     {
-        $default = $this->getDefaultDrive();
+        $this->initDefaultDrive();
         
-        $path  = '/var/www/kuabara';
-        $drive = $this->filesystem()->drive('drive.kuabara');
-
+        $name = 'drive.kuabara';
+        $path = '/var/www/kuabara';
+        
+        $drive = $this->filesystem()->drive($name);
         $drive->root($path)->save();
 
         $this->assertDriveInstance($drive);
         $this->assertEquals($drive->root(), $path);
     }
 
-    private function filesystem() : FileSystem
-    {
-        return new FileSystem();
-    }
+    /**
+     * Testa se é possível criar uma novo drive utilizando
+     * dados do drive padrão
+     *
+     * @return void
+     */
+    public function testCreateDriveUsingDefaultConfig()
+    {   
+        $this->initDefaultDrive();
+        
+        $name  = 'drive.kurama';
+        $drive = $this->filesystem()->drive($name)->save();
 
-    private function getTemplateFolder() : string
-    {
-        return config('filesystem.folders.template');
-    }
-
-    private function getFolderStructure() : array
-    {
-        return config('filesystem.structure');
-    }
-
-    private function getRootFolder() : string
-    {
-        return config('filesystem.folders.root');
-    }
-
-    private function getDefaultDrive() : Drive
-    {
-        $root      = $this->getRootFolder(); 
-        $template  = $this->getTemplateFolder();
-        $structure = $this->getFolderStructure();
-
-        $drive = $this->filesystem()->default();
-
-        $drive
-            ->root($root)
-            ->structure($structure)
-            ->template($template)
-            ->save();
-
-        return $drive;
-    }
-
-    private function assertDriveInstance($drive)
-    {
-        $this->assertInstanceOf(Drive::class, $drive);
-        $this->assertIsArray($drive->structure());
-        $this->assertIsString($drive->root());
-        $this->assertIsString($drive->template());
+        $this->assertDriveInstance($drive);
     }
 }

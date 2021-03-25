@@ -2,10 +2,10 @@
 
 namespace Maestriam\FileSystem\Foundation;
 
-use Maestriam\FileSystem\Foundation\File;
 use Maestriam\FileSystem\Concerns\FluentCalls;
 use Maestriam\FileSystem\Concerns\HandlesCache;
 use Maestriam\FileSystem\Contracts\DriveInterface;
+use Maestriam\FileSystem\Foundation\File\FileHandler;
 
 class Drive implements DriveInterface
 {
@@ -27,9 +27,9 @@ class Drive implements DriveInterface
      * @param string $name
      * @return File
      */
-    public function file(string $name) : File
+    public function file(string $name) : FileHandler
     {
-        return new File($name);    
+        return new FileHandler($name, $this);    
     }
 
     /**
