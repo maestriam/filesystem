@@ -2,7 +2,6 @@
 
 namespace Maestriam\FileSystem\Tests;
 
-use Maestriam\FileSystem\Foundation\Drive;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 
 class TestCase extends BaseTestCase
@@ -12,8 +11,8 @@ class TestCase extends BaseTestCase
      */
     public function setUp() : void
     {
-        $this->setConst();        
         parent::setUp();
+        $this->setConst();        
     }
   
     /**
@@ -31,25 +30,11 @@ class TestCase extends BaseTestCase
     }
 
     /**
-     * Verifica se é uma instância de drive
-     *
-     * @param Drive $drive
-     * @return void
-     */
-    protected function assertDriveInstance(Drive $drive)    
-    {
-        $this->assertInstanceOf(Drive::class, $drive);
-        $this->assertIsString($drive->root());
-        $this->assertIsArray($drive->structure());
-        $this->assertIsString($drive->template());
-    }
-
-    /**
-     * Define as constantes utilizadas no package
+     * Define as constantes necessárias dentro do projeto
      *
      * @return void
      */
-    private function setConst()
+    protected function setConst()
     {
         if (! defined('DS')) {
             define('DS', DIRECTORY_SEPARATOR);

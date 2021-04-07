@@ -6,7 +6,7 @@ namespace Maestriam\FileSystem\Concerns;
  * Configura as chamadas das funções para ficar de 
  * maneira mais flúida dentro da classe
  */
-trait FluentCalls 
+trait FluentMethods 
 {       
     /**
      * Intercepta as chamadas de funções e verifica se há

@@ -2,147 +2,84 @@
 
 namespace Maestriam\FileSystem\Foundation;
 
-use Maestriam\FileSystem\Concerns\FluentCalls;
-use Maestriam\FileSystem\Concerns\HandlesCache;
-use Maestriam\FileSystem\Contracts\DriveInterface;
-use Maestriam\FileSystem\Foundation\File\FileHandler;
+use Maestriam\FileSystem\Foundation\Drive\StructureDirectory;
 
-class Drive implements DriveInterface
+class Drive
 {
-    use FluentCalls, HandlesCache;
+    /**
+     * Nome do driver que será manipulado
+     */
+    private string $name;
 
     /**
-     * Caminho do diretório para criação de arquivos
+     * Instância responsável pelas RNs sobre diretórios
      */
-    private string $rootFolder;
+    private StructureDirectory $structure;
 
+    /**
+     * Driver para manipulações de arquivos
+     *
+     * @param string $name
+     */
     public function __construct(string $name)
     {
-        $this->name($name);
+        $this->initStructure()->setName($name);
     }
 
     /**
-     * Retorna a instância de manipulação de arquivos
-     *
-     * @param string $name
-     * @return File
-     */
-    public function file(string $name) : FileHandler
-    {
-        return new FileHandler($name, $this);    
-    }
-
-    /**
-     * Retorna a instância de manipulação de diretórios
-     *
-     * @param string $name
-     * @return Folder
-     */
-    public function folder(string $name) : Folder
-    {
-        return new Folder($name);
-    }
-
-    /**
-     * Salva as configurações definidas para o drive
+     * Cria instância para manipulações de diretórios
      *
      * @return Drive
      */
-    public function save() : Drive
+    private function initStructure() : Drive
     {
-        $this->cache('root', $this->root());
-        $this->cache('template', $this->template());
-        $this->cache('structure', $this->structure());      
-        
+        $this->structure = new StructureDirectory();
+
         return $this;
     }
 
     /**
-     * Define o nome do drive
+     * Define o nome do drive que será manipulado
      *
      * @param string $name
      * @return Drive
      */
     private function setName(string $name) : Drive
     {
-        $this->name = strtolower($name);
+        $this->name = $name;
+
         return $this;
     }
 
     /**
-     * Retorna o nome do drive
+     * Retorna a instância para manipulação de arquivos baseado em um template,
+     * sobre as configurações deste driver
      *
-     * @return string
+     * @param string $name
+     * @return File
      */
-    private function getName() : string
+    public function template(string $name) : Template
     {
-        return $this->name;
+        return new Template($name, $this->structure);
     }
 
     /**
-     * Define o caminho de templates do drive
+     * Retorna a estrutura de diretórios defindos no drive
      *
-     * @param string $folder
-     * @return Drive
+     * @return StructureDirectory
      */
-    private function setTemplate(string $folder) : Drive
+    public function structure() : StructureDirectory
     {
-        $this->templateFolder = $folder;
-        return $this;
+        return $this->structure;
     }
 
     /**
-     * Retorna o caminho de templates do drive
+     * Salva as informações definidas sobre o drive no cache da aplicação
      *
-     * @return string
+     * @return void
      */
-    private function getTemplate() : string
+    public function save()
     {
-        return $this->templateFolder ?? $this->default('template');
-    }
-
-    /**
-     * Define a estrutura de diretórios de criação de arquivos gerados
-     *
-     * @param array $structure
-     * @return Drive
-     */
-    private function setStructure(array $structure) : Drive
-    {
-        $this->structure = $structure;
-        return $this;
-    }
-    
-    /**
-     * Retorna a estrutura de diretórios de criação de arquivos gerados
-     *
-     * @param array $structure
-     * @return Drive
-     */
-    private function getStructure() : array
-    {
-        return $this->structure ?? $this->default('structure');
-    }
-
-    /**
-     * Define o caminho de destino dos arquivos gerados
-     *
-     * @param string $rootFolder
-     * @return Drive
-     */
-    private function setRoot(string $rootFolder) : Drive
-    {
-        $this->rootFolder = $rootFolder;
-        return $this;
-    }
-    
-    /**
-     * Retorna o caminho de destino dos arquivos gerados
-     *
-     * @return string
-     */
-    private function getRoot() : string
-    {
-        return $this->rootFolder ?? $this->default('root');
+        return $this;   
     }
 }
