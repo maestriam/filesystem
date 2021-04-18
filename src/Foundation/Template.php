@@ -74,6 +74,7 @@ class Template
         return $this;
     }
 
+
     /**
      * Undocumented function
      *
@@ -84,12 +85,10 @@ class Template
     public function create(string $filename, array $placeholders)
     {
         $content = $this->stub->parse($placeholders);
+        $folder  = $this->structure->findByTemplate($this->name);
 
-        $folder = $this->structure->findByTemplate($this->name);
-
-        $file = $folder . $filename;
-
-
-        
+        $file = new File($filename);
+                
+        return $file->setFolder($folder)->create($content);
     }
 }

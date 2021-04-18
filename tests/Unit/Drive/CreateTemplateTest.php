@@ -7,7 +7,6 @@ use Maestriam\FileSystem\Tests\TestCase;
 
 class CreateTemplateTest extends TestCase
 {
-
     public function setUp() : void
     {
         parent::setUp();
@@ -22,12 +21,13 @@ class CreateTemplateTest extends TestCase
     {                
         $tpl  = 'template-file';
         $name = 'filename.txt';               
-        $data = ['foo' => 'baz'];        
+        $data = ['test' => '"Create Test File"'];        
 
-        $drive = $this->getDrive();    
+        $drive = $this->getDrive();
 
-        $file = $drive->template($tpl)
-                      ->create($name, $data);
+        $file = $drive->template($tpl)->create($name, $data);
+
+        $this->assertFileExists($file->absolute_path);
     }
     
     /**
@@ -37,7 +37,7 @@ class CreateTemplateTest extends TestCase
      */
     private function getDrive() : Drive
     {
-        $root = __DIR__ . '/../sandbox';        
+        $root = __DIR__ . '/../../../sandbox/';        
         $tpl  = __DIR__ . '/../../../templates/';
         
         $paths = ['template-*' => 'Stubs'];

@@ -1,3 +1,5 @@
 vendor/
 sandbox/
+out/
+build/
 .phpunit.result.cache

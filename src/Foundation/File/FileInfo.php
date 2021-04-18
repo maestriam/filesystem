@@ -4,7 +4,7 @@ namespace Maestriam\FileSystem\Foundation\File;
 
 use DateTime;
 
-class FileData
+class FileInfo
 {
     public string $name;
 
