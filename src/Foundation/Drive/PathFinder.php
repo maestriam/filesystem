@@ -88,10 +88,13 @@ class PathFinder
     private function getDefaultSubFolder(string $requested) : ?string
     {
         $structure = $this->getStructureDirectory();
-
         
         foreach($structure as $key => $path)
         {   
+            if ($key == '*') {
+                return $path;
+            }
+
             $pattern = "/{$key}/";
 
             if (preg_match($pattern, $requested)) {

@@ -23,7 +23,7 @@ class CreateTemplateTest extends TestCase
         $name = 'filename.txt';               
         $data = ['test' => '"Create Test File"'];        
 
-        $drive = $this->getDrive();
+        $drive = $this->createDrive();
 
         $file = $drive->template($tpl)->create($name, $data);
 
@@ -35,7 +35,7 @@ class CreateTemplateTest extends TestCase
      *
      * @return Drive
      */
-    private function getDrive() : Drive
+    private function createDrive() : Drive
     {
         $root = __DIR__ . '/../../../sandbox/';        
         $tpl  = __DIR__ . '/../../../templates/';

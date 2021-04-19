@@ -13,10 +13,15 @@ class CreateFileTest extends TestCase
     }
 
     public function testCreateFile()
-    {        
+    {                
+        $content = 'content file';
+        $folder  = __DIR__ . '../../../../sandbox/';
+        
         $file = new File('file.txt');
-        $path = __DIR__ . '../../../../sandbox/';
-        $info = $file->setFolder($path)->create('content file');
+
+        $info = $file
+                    ->setFolder($folder)
+                    ->create($content);
 
         $this->assertFileExists($info->absolute_path);
     }
