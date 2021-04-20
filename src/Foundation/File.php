@@ -8,17 +8,17 @@ use Maestriam\FileSystem\Foundation\File\FileInfo;
 class File
 {
     /**
-     * 
+     * Nome do arquivo
      */
     private string $name = '';
 
     /**
-     * 
+     * Diretório onde será armazenado
      */
     private string $folder = '';
 
     /**
-     * 
+     * Manipulador de arquivos no sistema
      */
     private FileHandler $handler;
 
@@ -102,7 +102,7 @@ class File
     }
 
     /**
-     * Undocumented function
+     * Instancia o manipulador para a criação de arquivos
      *
      * @return FileHandler
      */
@@ -116,7 +116,7 @@ class File
     }
     
     /**
-     * Cria um novo arquivo com 
+     * Cria um novo arquivo, de acordo com o conteúdo informado
      *
      * @param string $content
      * @return FileInfo

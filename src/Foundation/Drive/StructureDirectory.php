@@ -2,10 +2,12 @@
 
 namespace Maestriam\FileSystem\Foundation\Drive;
 
-use Maestriam\FileSystem\Concerns\FluentMethods;
+use Maestriam\FileSystem\Concerns\FluentGetter;
 
 class StructureDirectory
 {    
+    use FluentGetter;
+
     /**
      * Caminho-raíz do projeto
      */
@@ -27,20 +29,6 @@ class StructureDirectory
     private PathFinder $finder;
 
     /**
-     * Inicia a instância com as regras de negócio
-     *
-     * @return void
-     */
-    private function initFinder()
-    {
-        $structure = $this->getPaths();
-
-        $this->finder = new PathFinder($structure);
-
-        return $this;
-    }
-
-    /**
      * Define/Retorna o caminho-raíz do projeto, 
      * de acordo com o tipo de parâmetro 
      *
@@ -58,7 +46,7 @@ class StructureDirectory
      * @param string $path
      * @return StructureDirectory
      */
-    private function setRoot(string $path) : StructureDirectory
+    public function setRoot(string $path) : StructureDirectory
     {
         $this->rootPath = $path;
         
@@ -93,7 +81,7 @@ class StructureDirectory
      * @param string $path
      * @return mixed
      */    
-    private function setTemplate(string $path) : StructureDirectory
+    public function setTemplate(string $path) : StructureDirectory
     {
         $this->templatePath = $path;
         
@@ -139,6 +127,21 @@ class StructureDirectory
         }  
          
         return $this->setPaths($paths)->initFinder();
+    }
+
+    /**
+     * Inicia a instância com as regras de negócio para pesquisar
+     * o diretório apropriado de acordo com o template
+     *
+     * @return void
+     */
+    private function initFinder()
+    {
+        $structure = $this->getPaths();
+
+        $this->finder = new PathFinder($structure);
+
+        return $this;
     }
     
     /**

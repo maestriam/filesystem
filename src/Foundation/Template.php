@@ -47,14 +47,14 @@ class Template
     }
 
     /**
-     * Carrega as informações de um 
+     * Carrega as informações de um arquivo stub
      *
      * @param string $name
      * @return Template
      */
     private function loadStub(string $name) : Template
     {
-        $source = $this->structure->template();
+        $source = $this->structure->template;
 
         $this->stub = new StubFile($source, $name);
 
@@ -85,7 +85,8 @@ class Template
     public function create(string $filename, array $placeholders)
     {
         $content = $this->stub->parse($placeholders);
-        $folder  = $this->structure->findByTemplate($this->name);
+
+        $folder = $this->structure->findByTemplate($this->name);
 
         $file = new File($filename);
                 
