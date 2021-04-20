@@ -27,23 +27,23 @@ class Drive
      */
     public function __construct(string $name)
     {
-        $this->initStructure();
+        $this->initStructure()->setName($name);
 
-        if ($this->exists($name)) {
-            return $this->load($name);
+        if (! $this->exists()) {
+            return $this;
         }
 
-        return $this->setName($name);
+        return $this->load();
     }
 
     /**
      * Carrega as informações do drive salvas no cache
      *
-     * @param string $name
      * @return Drive
      */
-    private function load(string $name) : Drive
+    private function load() : Drive
     {
+        $name = $this->getName();
         $cached = Cache::get($name);
 
         $structure = $cached['structure'];
@@ -146,11 +146,12 @@ class Drive
     /**
      * Retorna se o drive existe no cache
      *
-     * @param string $name
      * @return boolean
      */
-    private function exists(string $name) : bool
-    {
+    public function exists() : bool
+    {   
+        $name = $this->getName();
+
         $cached = Cache::get($name);
 
         return (! $cached) ? false : true;

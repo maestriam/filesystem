@@ -1,6 +1,6 @@
 <?php
 
-namespace Maestriam\FileSystem\Tests;
+namespace Maestriam\FileSystem\Tests\Unit\Drive;
 
 use Maestriam\FileSystem\Foundation\Drive;
 use Maestriam\FileSystem\Tests\TestCase;
