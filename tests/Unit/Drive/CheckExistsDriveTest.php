@@ -3,6 +3,7 @@
 namespace Maestriam\FileSystem\Tests\Unit\Drive;
 
 use Maestriam\FileSystem\Tests\TestCase;
+use Maestriam\FileSystem\Tests\Unit\Drive\DriveTestCase;
 
 class CheckExistsDriveTest extends DriveTestCase
 {
@@ -19,6 +20,7 @@ class CheckExistsDriveTest extends DriveTestCase
     public function testCheckDriveExists()
     {
         $drive = $this->createDrive('motorhead');
+        
         $drive->save();
 
         $this->assertIsBool($drive->exists());
