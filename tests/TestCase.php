@@ -4,6 +4,7 @@ namespace Maestriam\FileSystem\Tests;
 
 use Maestriam\FileSystem\Foundation\Drive;
 use Orchestra\Testbench\TestCase as BaseTestCase;
+use Maestriam\FileSystem\Providers\FileSystemProvider;
 
 class TestCase extends BaseTestCase
 {
@@ -14,6 +15,19 @@ class TestCase extends BaseTestCase
     {
         $this->setConst();        
         parent::setUp();
+    }
+
+    /**
+     * Retorna o Service Provider para carregamento
+     *
+     * @param mixed $app
+     * @return array
+     */
+    protected function getPackageProviders($app) : array
+    {
+        return [
+            FileSystemProvider::class,
+        ];
     }
   
     /**
