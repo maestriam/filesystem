@@ -65,9 +65,9 @@ class FileHandler
         try {
             
             $location = $this->getLocation();
+            $file = sprintf("%s/%s", $location, $this->name);
 
-            $file   = sprintf("%s/%s", $location, $this->name);
-            $handle = fopen($file, 'w');
+            $handle = fopen($file, 'w', );
             
             fwrite($handle, $content);
             fclose($handle);
@@ -77,7 +77,7 @@ class FileHandler
             return $this;
 
         } catch (\Exception $e) {
-            throw new Exception('No Permission to create file.');                       
+            throw new Exception('Error to create file: '.$e->getMessage());
         }
     }
 

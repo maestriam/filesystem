@@ -4,6 +4,7 @@ namespace Maestriam\FileSystem\Foundation;
 
 use Maestriam\FileSystem\Foundation\Template\StubFile;
 use Maestriam\FileSystem\Foundation\Drive\StructureDirectory;
+use Maestriam\FileSystem\Foundation\File\FileInfo;
 
 class Template
 {
@@ -82,7 +83,7 @@ class Template
      * @param array $placeholders
      * @return void
      */
-    public function create(string $filename, array $placeholders)
+    public function create(string $filename, array $placeholders) : FileInfo
     {
         $content = $this->stub->parse($placeholders);
 

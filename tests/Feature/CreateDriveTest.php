@@ -13,6 +13,7 @@ class CreateDriveTest extends TestCase
         $drive = FileSystem::drive('drive-facade')->save();
 
         $this->assertInstanceOf(Drive::class, $drive);
+        
         $this->assertTrue($drive->exists());
     }
 }
