@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://avatars2.githubusercontent.com/u/45754626?s=75&v=4" alt="Stisla logo" width="75" height="75">
+    <img src="imgs/filesystem.png" alt="maestriam/filesystem logo">
 </p>
 
 <h1 align="center">maestriam/fileSystem</h1>
