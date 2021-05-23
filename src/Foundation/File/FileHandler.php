@@ -99,7 +99,6 @@ class FileHandler
             return $this;
             
         } catch (\Exception $e) {
-            dd(is_dir($this->getLocation()), $this->location, $e->getMessage());
             throw new Exception("Error to folder: ". $e->getMessage());
         }
     }
