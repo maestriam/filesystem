@@ -90,8 +90,8 @@ class FileHandler
     {
         try {
 
-            $location = $this->getLocation();            
-            
+            $location = $this->getLocation();                        
+
             if (! is_dir($location)) {
                 mkdir($location, $this->permission, true);
             }
@@ -99,6 +99,7 @@ class FileHandler
             return $this;
             
         } catch (\Exception $e) {
+            dd(is_dir($this->getLocation()), $location);
             throw new Exception("Error to folder: ". $e->getMessage());
         }
     }
