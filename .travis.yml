@@ -3,7 +3,9 @@ language: php
 php:
   - 8.0
 
-os: linux
+os: 
+  - linux
+  - windows
 
 before_script:
   - composer install
