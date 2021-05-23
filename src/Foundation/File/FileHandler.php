@@ -99,7 +99,7 @@ class FileHandler
             return $this;
 
         } catch (\Exception $e) {
-            throw new Exception('No Permission to create folder.');
+            throw new Exception("Error to create file: ". $e->getMessage());
         }
     }
 
