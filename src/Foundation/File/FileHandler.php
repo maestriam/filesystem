@@ -7,8 +7,18 @@ use Maestriam\FileSystem\Foundation\Drive\PathSanitizer;
 
 class FileHandler
 {
+    /**
+     * Nome do arquivo 
+     * 
+     * @var string
+     */
     private string $name;
 
+    /**
+     * Nível de permissão
+     * 
+     * @var int
+     */
     private int $permission = 0755;
 
     /**
@@ -65,9 +75,9 @@ class FileHandler
         try {
             
             $location = $this->getLocation();
-            $file = sprintf("%s/%s", $location, $this->name);
+            $filename = sprintf("%s/%s", $location, $this->name);
 
-            $handle = fopen($file, 'w');
+            $handle = fopen($filename, 'w');
             
             fwrite($handle, $content);
             fclose($handle);
@@ -99,7 +109,7 @@ class FileHandler
             return $this;
             
         } catch (\Exception $e) {
-            throw new Exception("Error to folder: ". $e->getMessage());
+            throw new Exception("Error to create folder: ". $e->getMessage());
         }
     }
 
@@ -128,7 +138,7 @@ class FileHandler
     }
 
     /**
-     * Undocumented function
+     * Define o conteúdo que será inserido no arquivo
      *
      * @param string $content
      * @return FileHandler
@@ -141,6 +151,28 @@ class FileHandler
     }
 
     /**
+     * Analisa o nome do arquivo se contém algum sub-diretório embutido
+     * Se houver, separa e 
+     *
+     * @return FileHandler
+     */
+    private function analizeFilename() : FileHandler
+    {
+        if (! str_contains($this->name, '/')) {
+            return $this;
+        }
+
+        $pieces = explode('/', $this->name);
+        $flname = array_pop($pieces);
+        $folder = implode('/', $pieces);
+        
+        $this->name = $flname;
+        $this->location .= $folder . DS;
+
+        return $this;
+    }
+
+    /**
      * Undocumented function
      *
      * @param string $content
@@ -148,7 +180,8 @@ class FileHandler
      */
     public function create(string $content) : FileInfo
     {
-        return $this->makeFolder()
+        return $this->analizeFilename()
+                    ->makeFolder()
                     ->makeFile($content)
                     ->setContent($content)
                     ->toObject();

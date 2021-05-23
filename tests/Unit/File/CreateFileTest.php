@@ -7,11 +7,6 @@ use Maestriam\FileSystem\Tests\TestCase;
 
 class CreateFileTest extends TestCase
 {
-    public function setUp() : void
-    {
-        parent::setUp();
-    }
-
     public function testCreateFile()
     {                
         $content = 'content file';

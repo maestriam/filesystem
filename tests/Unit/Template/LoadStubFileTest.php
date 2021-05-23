@@ -10,7 +10,7 @@ class LoadStubFileTest extends TestCase
     public function testLoadStub()
     {
         $fname  = 'template-file';
-        $source = __DIR__ . '/../../../templates/';
+        $source = __DIR__ . '/../../../stubs/';
 
         $stubfile = new StubFile($source, $fname);     
         $content  = $stubfile->raw();

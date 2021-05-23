@@ -69,4 +69,17 @@ class TestCase extends BaseTestCase
             define('DS', DIRECTORY_SEPARATOR);
         }
     }
+
+    protected function initDrive(string $name) : Drive
+    {
+        $root = __DIR__ . '/../sandbox/'; 
+        $stub = __DIR__ . '/../stubs/';
+
+        $drive = new Drive($name);
+
+        $drive->structure()->root($root);
+        $drive->structure()->template($stub);
+
+        return $drive;
+    }
 }
