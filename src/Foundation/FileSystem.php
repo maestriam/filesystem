@@ -2,7 +2,7 @@
 
 namespace Maestriam\FileSystem\Foundation;
 
-use Maestriam\FileSystem\Entities\folder;
+use Maestriam\FileSystem\Entities\Folder;
 use Maestriam\FileSystem\Foundation\Drive;
 use Maestriam\FileSystem\Foundation\Drive\PathSanitizer;
 
