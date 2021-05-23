@@ -1,19 +1,12 @@
-
 language: php
 
 php:
-  - "8.0.1"
+  - 8.0
 
-cache:
-  directories:
-    - $HOME/.composer/cache
+os: linux
 
 before_script:
-  - travis_retry composer update --no-interaction --prefer-dist
+  - composer install
 
 script:
-  - if [ $(phpenv version-name) == "8.0.1" ]; then vendor/bin/phpunit 
-
-after_script:
-  - if [ $(phpenv version-name) == "8.0.1" ]; then wget https://scrutinizer-ci.com/ocular.phar; fi
-  - if [ $(phpenv version-name) == "8.0.1" ]; then php ocular.phar code-coverage:upload --format=php-clover coverage.clover; fi
+  - vendor/bin/phpunit
