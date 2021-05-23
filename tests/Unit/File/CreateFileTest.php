@@ -17,11 +17,9 @@ class CreateFileTest extends TestCase
         $content = 'content file';
         $folder  = __DIR__ . '../../../../sandbox/';
         
-        $file = new File('file.txt');
+        $file = new File('unit-test-create-file.txt');
 
-        $info = $file
-                    ->setFolder($folder)
-                    ->create($content);
+        $info = $file->setFolder($folder)->create($content);
 
         $this->assertFileExists($info->absolute_path);
     }
