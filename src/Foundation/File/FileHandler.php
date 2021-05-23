@@ -67,7 +67,7 @@ class FileHandler
             $location = $this->getLocation();
             $file = sprintf("%s/%s", $location, $this->name);
 
-            $handle = fopen($file, 'w', );
+            $handle = fopen($file, 'w');
             
             fwrite($handle, $content);
             fclose($handle);
@@ -90,16 +90,16 @@ class FileHandler
     {
         try {
 
-            $location = $this->getLocation();
+            $location = $this->getLocation();            
             
             if (! is_dir($location)) {
                 mkdir($location, $this->permission, true);
             }
-
+            
             return $this;
-
+            
         } catch (\Exception $e) {
-            throw new Exception("Error to create file: ". $e->getMessage());
+            throw new Exception("Error to folder: ". $e->getMessage());
         }
     }
 

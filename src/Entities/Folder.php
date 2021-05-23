@@ -20,7 +20,16 @@ class Folder
 
     public function create()
     {
+        if ($this->exists()) {
+            return true;
+        }
+
         mkdir($this->path, 0755, true);
+    }
+
+    public function exists() : bool
+    {
+        return (is_dir($this->path));
     }
 
     private function setPath(string $path)
