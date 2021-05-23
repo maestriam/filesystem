@@ -1,6 +1,6 @@
 <?php
 
-namespace Maestriam\FileSystem\Tests\Feature;
+namespace Maestriam\FileSystem\Tests\Feature\Facade;
 
 use Maestriam\FileSystem\Foundation\Drive;
 use Maestriam\FileSystem\Support\FileSystem;

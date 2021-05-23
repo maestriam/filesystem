@@ -2,4 +2,5 @@ vendor/
 sandbox/
 out/
 build/
+ocular.phar
 .phpunit.result.cache
