@@ -19,12 +19,12 @@ class Template
     private StubFile $stub;
     
     /**
-     * 
+     * Regras de negócio de diretório 
      */
     private StructureDirectory $structure;
 
     /**
-     * Undocumented function
+     * Regras de negócio para manipulação de arquivos baseado em template
      *
      * @param string $name
      * @param StructureDirectory $structure
@@ -63,7 +63,7 @@ class Template
     }
     
     /**
-     * Undocumented function
+     * Define o nome do arquivo de template
      *
      * @param string $name
      * @return Template
@@ -77,7 +77,7 @@ class Template
 
 
     /**
-     * Undocumented function
+     * Cria um arquivo baseado em um template
      *
      * @param string $filename
      * @param array $placeholders
@@ -92,5 +92,16 @@ class Template
         $file = new File($filename);
                 
         return $file->setFolder($folder)->create($content);
+    }
+
+    /**
+     * Retorna o conteúdo de um template já interpretado
+     *
+     * @param array $placeholders
+     * @return string
+     */
+    public function preview(array $placeholders) : string
+    {
+        return $this->stub->parse($placeholders);
     }
 }
