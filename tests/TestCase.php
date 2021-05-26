@@ -80,8 +80,6 @@ class TestCase extends BaseTestCase
         $drive->structure()->root($root);
         $drive->structure()->template($stub);
 
-        $drive->save();
-
         return $drive;
     }
 }

@@ -104,4 +104,20 @@ class Template
     {
         return $this->stub->parse($placeholders);
     }
+
+    /**
+     * Retorna o arquivo, baseado em um modelo de template,
+     * já existe no diretório definido
+     *
+     * @param array $placeholders
+     * @return string
+     */
+    public function exists(string $filename) : bool
+    {
+        $folder = $this->structure->findByTemplate($this->name);
+
+        $file = $folder . DS . $filename;
+
+        return (is_file($file)) ? true : false;
+    }
 }

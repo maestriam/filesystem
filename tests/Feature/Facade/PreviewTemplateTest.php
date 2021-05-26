@@ -12,7 +12,7 @@ class PreviewTemplateTest extends TestCase
         $phrase = 'preview test';
         $drive  = 'preview-drive';
 
-        $this->initDrive($drive);
+        $this->initDrive($drive)->save();
         
         $placeholders = ['test' => $phrase];
         
