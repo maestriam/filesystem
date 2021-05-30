@@ -11,6 +11,7 @@
 <span align="center">
 
 ![Travis Build](https://img.shields.io/travis/maestriam/filesystem/master?style=flat-square)
+[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/quality/b/maestriam/filesystem/master?style=flat-square)](https://scrutinizer-ci.com/g/maestriam/filesystem/?branch=master)
 ![GitHub Last Commit](https://img.shields.io/github/last-commit/maestriam/filesystem?style=flat-square)
 
 </span>

@@ -27,6 +27,22 @@ class Folder
         mkdir($this->path, 0755, true);
     }
 
+    public function delete(string $path = null)
+    {
+        $folder = $path ?? $this->path;
+
+        $files = array_diff(scandir($folder), array('.', '..'));
+
+        foreach ($files as $file) { 
+
+            $item = "$folder/$file";
+
+            is_dir($item) ? $this->delete($item) : unlink($item); 
+        }
+
+        return rmdir($folder);
+    }
+
     public function exists() : bool
     {
         return (is_dir($this->path));
