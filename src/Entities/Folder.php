@@ -3,6 +3,7 @@
 namespace Maestriam\FileSystem\Entities;
 
 use Maestriam\FileSystem\Foundation\Drive\PathSanitizer;
+use Maestriam\FileSystem\Foundation\FolderReader;
 
 class Folder
 {
@@ -18,6 +19,11 @@ class Folder
         return PathSanitizer::sanitize($this->path);
     }
 
+    public function read(int $level) : array
+    {
+        return FolderReader::read($this->path, $level);
+    }
+
     public function create()
     {
         if ($this->exists()) {
@@ -25,6 +31,22 @@ class Folder
         }
 
         mkdir($this->path, 0755, true);
+    }
+
+    public function delete(string $path = null)
+    {
+        $folder = $path ?? $this->path;
+
+        $files = array_diff(scandir($folder), array('.', '..'));
+
+        foreach ($files as $file) { 
+
+            $item = "$folder/$file";
+
+            is_dir($item) ? $this->delete($item) : unlink($item); 
+        }
+
+        return rmdir($folder);
     }
 
     public function exists() : bool
