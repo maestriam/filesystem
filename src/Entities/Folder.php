@@ -3,6 +3,7 @@
 namespace Maestriam\FileSystem\Entities;
 
 use Maestriam\FileSystem\Foundation\Drive\PathSanitizer;
+use Maestriam\FileSystem\Foundation\FolderReader;
 
 class Folder
 {
@@ -16,6 +17,11 @@ class Folder
     public function sanitize()
     {
         return PathSanitizer::sanitize($this->path);
+    }
+
+    public function read(int $level) : array
+    {
+        return FolderReader::read($this->path, $level);
     }
 
     public function create()

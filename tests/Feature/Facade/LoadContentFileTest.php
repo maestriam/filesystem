@@ -2,42 +2,41 @@
 
 namespace Maestriam\FileSystem\Tests\Feature\Facade;
 
+use Maestriam\FileSystem\Foundation\Template;
 use Maestriam\FileSystem\Tests\TestCase;
 use Maestriam\FileSystem\Support\FileSystem;
 
-class FileExistsByTemplateTest extends TestCase
+class LoadContentFileTest extends TestCase
 {
     public function testLoadContent()
-    {
-        $drive = 'exists-file-template-drive';
-
-        $this->getDrive($drive);
-
-        $filename = 'my-file.txt';
+    {        
+        $template = $this->template();
         
-        $ret = FileSystem
-                    ::drive($drive)
-                    ->template('template-file')
-                    ->filename($filename)
-                    ->load();
-
-        $this->assertIsBool($ret);
-        $this->assertFalse($ret);
+        $template->create();
         
+        $content = $template->load('my-file.txt');
+
+        $this->assertIsString($content);
+        $this->assertStringContainsString('load', $content);
     }
+    
+    public function template() : Template
+    {        
+        $template = 'template-file';        
+        $filename = 'my-file.txt';
 
+        $placeholder = ['test' => 'load'];        
+        $driveName   = 'file-template-drive-clear';
 
-    private function createFile()
-    {
-        $drive = 'exists-file-template-drive';
-        
-        $this->getDrive($drive);
+        $drive = $this->initDrive($driveName);
+                
+        $drive->structure()->paths(['template-file' => '.']);        
+        $drive->save();
 
-        $filename = 'my-files-xs.txt';
-        
-        FileSystem
-            ::drive($drive)
-            ->template('template-file')
-            ->create($filename, ['test' => 'foo']);
+        return FileSystem
+                    ::drive($driveName)
+                    ->template($template)
+                    ->filename($filename)
+                    ->placeholders($placeholder);
     }
 }

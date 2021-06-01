@@ -17,6 +17,10 @@ class Template
      * Nome do arquivo stub
      */
     private StubFile $stub;
+
+    private string $filename;
+
+    private array $placeholders = [];
     
     /**
      * Regras de negócio de diretório 
@@ -75,6 +79,20 @@ class Template
         return $this;
     }
 
+    public function filename(string $filename) : Template
+    {
+        $this->filename = $filename;
+
+        return $this;
+    }
+
+    public function placeholders(array $placeholders = []) : Template
+    {
+        $this->placeholders = $placeholders;
+
+        return $this;
+    }
+
 
     /**
      * Cria um arquivo baseado em um template
@@ -83,8 +101,12 @@ class Template
      * @param array $placeholders
      * @return void
      */
-    public function create(string $filename, array $placeholders) : FileInfo
-    {
+    public function create(string $filename = null, array $placeholders = null) : FileInfo
+    {          
+        $filename = $filename ?? $this->filename;
+
+        $placeholders = $placeholders ?? $this->placeholders;
+
         $content = $this->stub->parse($placeholders);
 
         $folder = $this->structure->findByTemplate($this->name);
@@ -114,10 +136,26 @@ class Template
      */
     public function exists(string $filename) : bool
     {
-        $folder = $this->structure->findByTemplate($this->name);
-
-        $file = $folder . DS . $filename;
+        $file = $this->generateFilename($filename);
 
         return (is_file($file)) ? true : false;
+    }
+
+    public function load(string $filename) : ?string
+    {
+        if (! $this->exists($filename)) {
+            return null;
+        }
+
+        $file = $this->generateFilename($filename);
+
+        return file_get_contents($file);
+    }
+
+    private function generateFilename(string $filename) : string
+    {
+        $folder = $this->structure->findByTemplate($this->name);
+
+        return $folder . DS . $filename;
     }
 }
