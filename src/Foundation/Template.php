@@ -2,9 +2,11 @@
 
 namespace Maestriam\FileSystem\Foundation;
 
+use Maestriam\FileSystem\Foundation\Drive\PathSanitizer;
 use Maestriam\FileSystem\Foundation\Template\StubFile;
 use Maestriam\FileSystem\Foundation\Drive\StructureDirectory;
 use Maestriam\FileSystem\Foundation\File\FileInfo;
+use Maestriam\FileSystem\Support\FileSystem;
 
 class Template
 {
@@ -128,8 +130,8 @@ class Template
     }
 
     /**
-     * Retorna o arquivo, baseado em um modelo de template,
-     * já existe no diretório definido
+     * Retorna se o arquivo, baseado em um modelo de template, 
+     * já existe no diretório pré-definido.  
      *
      * @param array $placeholders
      * @return string
@@ -141,6 +143,12 @@ class Template
         return (is_file($file)) ? true : false;
     }
 
+    /**
+     * Retorna o contéudo
+     *
+     * @param string $filename
+     * @return string|null
+     */
     public function load(string $filename) : ?string
     {
         if (! $this->exists($filename)) {
@@ -152,10 +160,23 @@ class Template
         return file_get_contents($file);
     }
 
+    /**
+     * Retorna o caminho absoluto do arquivo, baseado nas premissas 
+     * definidas do template.  
+     *
+     * @return string
+     */
+    public function path(string $filename) : string
+    {
+        return $this->generateFilename($filename);
+    }
+
     private function generateFilename(string $filename) : string
     {
         $folder = $this->structure->findByTemplate($this->name);
 
-        return $folder . DS . $filename;
+        $path = $folder . DS . $filename; 
+
+        return PathSanitizer::sanitize($path);
     }
 }
