@@ -19,9 +19,18 @@ abstract class FolderReader
         return $result;
     }
 
+    static private function result() : array
+    {
+        return self::$result;
+    }
+
+    static private function reset()
+    {
+        self::$result = [];
+    }
+
     static private function scan(string $path, int $step, int $level) : void
     {
-        $folder = '';
         $items  = array_diff(scandir($path), array('.', '..'));        
         
         foreach($items as $item) {
@@ -57,15 +66,5 @@ abstract class FolderReader
         $pieces = array_splice($pieces, - $level);
 
         return implode('/', $pieces);
-    }
-
-    static private function result() : array
-    {
-        return self::$result;
-    }
-
-    static private function reset()
-    {
-        self::$result = [];
     }
 }

@@ -3,6 +3,7 @@
 namespace Maestriam\FileSystem\Entities;
 
 use Maestriam\FileSystem\Foundation\Drive\PathSanitizer;
+use Maestriam\FileSystem\Foundation\FileSearch;
 use Maestriam\FileSystem\Foundation\FolderReader;
 
 class Folder
@@ -23,6 +24,13 @@ class Folder
     {
         return FolderReader::read($this->path, $level);
     }
+
+    public function files(string $pattern = null) : array
+    {
+        $search = new FileSearch($this->path);
+
+        return $search->files($pattern);
+    } 
 
     public function create()
     {
