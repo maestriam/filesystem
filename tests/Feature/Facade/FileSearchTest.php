@@ -9,7 +9,7 @@ class FileSearchTest extends TestCase
 {
     public function testSearch()
     {
-        $path = __DIR__ . '/../../../vendor/composer';
+        $path = __DIR__ . '/../../../src';
 
         $files = FileSystem::folder($path)->files();
 

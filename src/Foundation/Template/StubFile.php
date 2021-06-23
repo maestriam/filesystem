@@ -52,7 +52,8 @@ class StubFile
         $source = PathSanitizer::sanitize($source);
 
         if (! is_dir($source)) {
-            throw new \Exception('Template folder not found');
+            $err = sprintf('Template folder [%s] not found', $source);
+            throw new \Exception($err);
         }
 
         $this->source = $source;

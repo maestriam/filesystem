@@ -50,7 +50,8 @@ class FileSearch
             $item = "$path/$item";
 
             if (is_dir($item)) { 
-                return $this->scan($item, $pattern);
+                $this->scan($item, $pattern);
+                continue;
             }            
 
             if ($pattern == null || preg_match($pattern, $item)) {
