@@ -3,4 +3,5 @@ sandbox/
 out/
 build/
 ocular.phar
+composer.lock
 .phpunit.result.cache
